@@ -1,69 +1,41 @@
 import type {DamageEstimate} from './types';
 
 /**
- * Mock damage estimation function
- * In production, this would call an AI service or ML model
+ * Estimate damage using OpenAI Vision API
+ * Sends image to the API endpoint which calls GPT-4 Vision
  */
 export async function estimateDamage(
   imageUrl: string,
 ): Promise<DamageEstimate> {
-  // Simulate API delay
-  await new Promise((resolve) => setTimeout(resolve, 1500));
+  try {
+    const response = await fetch('/api/analyze-damage', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        imageBase64: imageUrl,
+      }),
+    });
 
-  // Generate mock estimate based on random factors
-  const damageTypes = [
-    {
-      type: 'Front Bumper Damage',
-      severity: 'moderate' as const,
-      estimatedCost: Math.floor(Math.random() * 800) + 400,
-      description: 'Impact damage with visible cracks and deformation',
-    },
-    {
-      type: 'Hood Dent',
-      severity: 'minor' as const,
-      estimatedCost: Math.floor(Math.random() * 400) + 200,
-      description: 'Minor dent requiring paintless dent repair',
-    },
-    {
-      type: 'Headlight Replacement',
-      severity: 'severe' as const,
-      estimatedCost: Math.floor(Math.random() * 600) + 300,
-      description: 'Broken headlight assembly needs complete replacement',
-    },
-    {
-      type: 'Paint Scratches',
-      severity: 'minor' as const,
-      estimatedCost: Math.floor(Math.random() * 300) + 150,
-      description: 'Surface scratches requiring repainting',
-    },
-    {
-      type: 'Fender Damage',
-      severity: 'moderate' as const,
-      estimatedCost: Math.floor(Math.random() * 700) + 500,
-      description: 'Deformed fender panel requires replacement',
-    },
-  ];
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.details || 'Failed to analyze damage');
+    }
 
-  // Randomly select 1-3 damage types
-  const numDamages = Math.floor(Math.random() * 3) + 1;
-  const selectedDamages = damageTypes
-    .sort(() => Math.random() - 0.5)
-    .slice(0, numDamages);
-
-  const totalCost = selectedDamages.reduce(
-    (sum, damage) => sum + damage.estimatedCost,
-    0,
-  );
-  const laborHours = Math.ceil(totalCost / 100);
-  const partsNeeded = selectedDamages.map((d) => d.type.split(' ')[0]);
-
-  return {
-    totalCost,
-    damages: selectedDamages,
-    laborHours,
-    partsNeeded,
-    confidence: Math.random() * 0.2 + 0.75, // 75-95% confidence
-  };
+    const estimate: DamageEstimate = await response.json();
+    return estimate;
+  } catch (error) {
+    console.error('Error estimating damage:', error);
+    // Return a fallback estimate on error
+    return {
+      totalCost: 0,
+      damages: [],
+      laborHours: 0,
+      partsNeeded: [],
+      confidence: 0,
+    };
+  }
 }
 
 /**
