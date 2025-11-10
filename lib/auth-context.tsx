@@ -4,8 +4,7 @@ import {createContext, useContext, useEffect, useState} from 'react';
 import {
   User,
   onAuthStateChanged,
-  signInWithRedirect,
-  getRedirectResult,
+  signInWithPopup,
   signOut,
 } from 'firebase/auth';
 import {auth, googleProvider} from '@/lib/firebase';
@@ -27,26 +26,7 @@ export function AuthProvider({children}: {children: React.ReactNode}) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    let mounted = true;
-
-    // Check for redirect result on mount
-    const checkRedirectResult = async () => {
-      try {
-        const result = await getRedirectResult(auth);
-        if (result?.user && mounted) {
-          // User successfully signed in from redirect
-          console.log('Redirect sign-in successful', result.user.email);
-        }
-      } catch (error) {
-        console.error('Error getting redirect result:', error);
-      }
-    };
-
-    checkRedirectResult();
-
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
-      if (!mounted) return;
-
       console.log('Auth state changed:', firebaseUser?.email || 'No user');
       setUser(firebaseUser);
       if (firebaseUser) {
@@ -63,14 +43,13 @@ export function AuthProvider({children}: {children: React.ReactNode}) {
     });
 
     return () => {
-      mounted = false;
       unsubscribe();
     };
   }, []);
 
   const signInWithGoogle = async () => {
     try {
-      await signInWithRedirect(auth, googleProvider);
+      await signInWithPopup(auth, googleProvider);
     } catch (error) {
       console.error('Error signing in with Google:', error);
       throw error;
