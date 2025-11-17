@@ -18,6 +18,11 @@
   - Refactored `route.ts` to use new modular structure and improved error handling
     (app/api/analyze-damage/)
 
+- Added MCP server configuration for Context7, Firebase, and Vercel to `.vscode/mcp.json`.
+- Added deployment debugging prompt for Vercel (`.github/prompts/deployment-debug.prompt.md`).
+- Added error detection and fixing prompt for Next.js (`.github/prompts/fixErrors.prompt.md`).
+- Added `firebase-debug.log` for Firebase CLI and deployment diagnostics.
+
 ### Changed - 2025-11-17
 
 - Simplified header navigation: removed Dashboard, Privacy Policy, and Terms & Conditions links from the reusable Header component. Only Sign in button remains. (components/Header.tsx)
@@ -31,6 +36,8 @@
 - Added Firestore rules and indexes for secure, efficient querying and user-based access. (firestore.rules, firestore.indexes.json)
 - Added Backblaze B2 credentials to environment example. (.env.local.example)
 - Installed `axios` for Backblaze B2 upload support. (package.json, package-lock.json)
+
+- Updated `.vscode/mcp.json` to support new MCP server integrations.
 
 ### Removed - 2025-11-17
 

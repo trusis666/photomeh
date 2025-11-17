@@ -1,0 +1,278 @@
+[debug] [2025-11-17T13:53:10.605Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-11-17T13:53:10.609Z] > authorizing via signed-in user (trusis666@gmail.com)
+[debug] [2025-11-17T13:53:10.610Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-11-17T13:53:10.610Z] > authorizing via signed-in user (trusis666@gmail.com)
+[debug] [2025-11-17T13:53:10.616Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.617Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.617Z] > refreshing access token with scopes: []
+[debug] [2025-11-17T13:53:10.619Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-11-17T13:53:10.620Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:10.623Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.623Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.623Z] > refreshing access token with scopes: []
+[debug] [2025-11-17T13:53:10.623Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-11-17T13:53:10.624Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:10.625Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.625Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.625Z] > refreshing access token with scopes: []
+[debug] [2025-11-17T13:53:10.626Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-11-17T13:53:10.626Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:10.627Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.627Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.627Z] > refreshing access token with scopes: []
+[debug] [2025-11-17T13:53:10.628Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-11-17T13:53:10.628Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:10.629Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.629Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.629Z] > refreshing access token with scopes: []
+[debug] [2025-11-17T13:53:10.630Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-11-17T13:53:10.630Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:10.631Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.631Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.631Z] > refreshing access token with scopes: []
+[debug] [2025-11-17T13:53:10.632Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-11-17T13:53:10.632Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:10.642Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.642Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.642Z] > refreshing access token with scopes: []
+[debug] [2025-11-17T13:53:10.643Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-11-17T13:53:10.643Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:10.644Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.644Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.644Z] > refreshing access token with scopes: []
+[debug] [2025-11-17T13:53:10.645Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-11-17T13:53:10.645Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:10.653Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.653Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.653Z] > refreshing access token with scopes: []
+[debug] [2025-11-17T13:53:10.653Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-11-17T13:53:10.653Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:10.655Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.655Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.655Z] > refreshing access token with scopes: []
+[debug] [2025-11-17T13:53:10.655Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-11-17T13:53:10.655Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:10.656Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.656Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.656Z] > refreshing access token with scopes: []
+[debug] [2025-11-17T13:53:10.656Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-11-17T13:53:10.657Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:10.658Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.658Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.658Z] > refreshing access token with scopes: []
+[debug] [2025-11-17T13:53:10.658Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-11-17T13:53:10.658Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:10.659Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.659Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.659Z] > refreshing access token with scopes: []
+[debug] [2025-11-17T13:53:10.659Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-11-17T13:53:10.659Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:10.660Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.660Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.660Z] > refreshing access token with scopes: []
+[debug] [2025-11-17T13:53:10.661Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-11-17T13:53:10.661Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:10.664Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.664Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.664Z] > refreshing access token with scopes: []
+[debug] [2025-11-17T13:53:10.664Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-11-17T13:53:10.664Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:10.665Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.665Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.665Z] > refreshing access token with scopes: []
+[debug] [2025-11-17T13:53:10.665Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-11-17T13:53:10.665Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:10.666Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-11-17T13:53:10.666Z] > authorizing via signed-in user (trusis666@gmail.com)
+[debug] [2025-11-17T13:53:10.667Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.667Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.667Z] > refreshing access token with scopes: []
+[debug] [2025-11-17T13:53:10.667Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-11-17T13:53:10.667Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:10.668Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.668Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.668Z] > refreshing access token with scopes: []
+[debug] [2025-11-17T13:53:10.668Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-11-17T13:53:10.669Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:10.670Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.670Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.670Z] > refreshing access token with scopes: []
+[debug] [2025-11-17T13:53:10.670Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-11-17T13:53:10.670Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:10.671Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.671Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.671Z] > refreshing access token with scopes: []
+[debug] [2025-11-17T13:53:10.671Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-11-17T13:53:10.671Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:10.672Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.672Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.672Z] > refreshing access token with scopes: []
+[debug] [2025-11-17T13:53:10.673Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-11-17T13:53:10.673Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:10.674Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.674Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.674Z] > refreshing access token with scopes: []
+[debug] [2025-11-17T13:53:10.674Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-11-17T13:53:10.674Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:10.676Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.676Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.676Z] > refreshing access token with scopes: []
+[debug] [2025-11-17T13:53:10.676Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-11-17T13:53:10.676Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:10.678Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.678Z] Checked if tokens are valid: false, expires at: 1763379635303
+[debug] [2025-11-17T13:53:10.678Z] > refreshing access token with scopes: []
+[debug] [2025-11-17T13:53:10.678Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-11-17T13:53:10.678Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:10.977Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-11-17T13:53:10.977Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:11.086Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/fcm.googleapis.com [none]
+[debug] [2025-11-17T13:53:11.086Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/fcm.googleapis.com x-goog-quota-user=projects/photomeh-420
+[debug] [2025-11-17T13:53:11.112Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-11-17T13:53:11.112Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:11.197Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/storage.googleapis.com [none]
+[debug] [2025-11-17T13:53:11.197Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/storage.googleapis.com x-goog-quota-user=projects/photomeh-420
+[debug] [2025-11-17T13:53:11.199Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-11-17T13:53:11.199Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:11.247Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/fcm.googleapis.com [none]
+[debug] [2025-11-17T13:53:11.247Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/fcm.googleapis.com x-goog-quota-user=projects/photomeh-420
+[debug] [2025-11-17T13:53:11.250Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-11-17T13:53:11.250Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:11.297Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebaseapphosting.googleapis.com [none]
+[debug] [2025-11-17T13:53:11.297Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/photomeh-420
+[debug] [2025-11-17T13:53:11.299Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-11-17T13:53:11.299Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:11.346Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebaseremoteconfig.googleapis.com [none]
+[debug] [2025-11-17T13:53:11.346Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebaseremoteconfig.googleapis.com x-goog-quota-user=projects/photomeh-420
+[debug] [2025-11-17T13:53:11.348Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-11-17T13:53:11.348Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:11.396Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebaseremoteconfig.googleapis.com [none]
+[debug] [2025-11-17T13:53:11.396Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebaseremoteconfig.googleapis.com x-goog-quota-user=projects/photomeh-420
+[debug] [2025-11-17T13:53:11.399Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-11-17T13:53:11.399Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:11.445Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebaseio.com [none]
+[debug] [2025-11-17T13:53:11.445Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebaseio.com x-goog-quota-user=projects/photomeh-420
+[debug] [2025-11-17T13:53:11.448Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-11-17T13:53:11.448Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:11.495Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebasedataconnect.googleapis.com [none]
+[debug] [2025-11-17T13:53:11.495Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/photomeh-420
+[debug] [2025-11-17T13:53:11.497Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-11-17T13:53:11.497Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:11.544Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/fcm.googleapis.com [none]
+[debug] [2025-11-17T13:53:11.544Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/fcm.googleapis.com x-goog-quota-user=projects/photomeh-420
+[debug] [2025-11-17T13:53:11.546Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-11-17T13:53:11.546Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:11.592Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebasedataconnect.googleapis.com [none]
+[debug] [2025-11-17T13:53:11.592Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/photomeh-420
+[debug] [2025-11-17T13:53:11.593Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-11-17T13:53:11.593Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:11.640Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/storage.googleapis.com [none]
+[debug] [2025-11-17T13:53:11.640Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/storage.googleapis.com x-goog-quota-user=projects/photomeh-420
+[debug] [2025-11-17T13:53:11.658Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-11-17T13:53:11.658Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:11.705Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-11-17T13:53:11.705Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/photomeh-420
+[debug] [2025-11-17T13:53:11.707Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-11-17T13:53:11.707Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:11.753Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebaseapphosting.googleapis.com [none]
+[debug] [2025-11-17T13:53:11.753Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/photomeh-420
+[debug] [2025-11-17T13:53:11.754Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-11-17T13:53:11.754Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:11.802Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebaseio.com [none]
+[debug] [2025-11-17T13:53:11.802Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebaseio.com x-goog-quota-user=projects/photomeh-420
+[debug] [2025-11-17T13:53:11.818Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-11-17T13:53:11.818Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:11.872Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebaseremoteconfig.googleapis.com [none]
+[debug] [2025-11-17T13:53:11.872Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebaseremoteconfig.googleapis.com x-goog-quota-user=projects/photomeh-420
+[debug] [2025-11-17T13:53:11.873Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-11-17T13:53:11.873Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:11.918Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebasedataconnect.googleapis.com [none]
+[debug] [2025-11-17T13:53:11.919Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/photomeh-420
+[debug] [2025-11-17T13:53:11.920Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-11-17T13:53:11.920Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:11.968Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/identitytoolkit.googleapis.com [none]
+[debug] [2025-11-17T13:53:11.968Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/identitytoolkit.googleapis.com x-goog-quota-user=projects/photomeh-420
+[debug] [2025-11-17T13:53:11.969Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-11-17T13:53:11.969Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:12.016Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/identitytoolkit.googleapis.com [none]
+[debug] [2025-11-17T13:53:12.016Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/identitytoolkit.googleapis.com x-goog-quota-user=projects/photomeh-420
+[debug] [2025-11-17T13:53:12.018Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-11-17T13:53:12.018Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:12.064Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebaseapphosting.googleapis.com [none]
+[debug] [2025-11-17T13:53:12.064Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/photomeh-420
+[debug] [2025-11-17T13:53:12.065Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-11-17T13:53:12.065Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:12.112Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebaseio.com [none]
+[debug] [2025-11-17T13:53:12.112Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebaseio.com x-goog-quota-user=projects/photomeh-420
+[debug] [2025-11-17T13:53:12.114Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-11-17T13:53:12.114Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:12.161Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/identitytoolkit.googleapis.com [none]
+[debug] [2025-11-17T13:53:12.162Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/identitytoolkit.googleapis.com x-goog-quota-user=projects/photomeh-420
+[debug] [2025-11-17T13:53:12.182Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-11-17T13:53:12.182Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:12.230Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/storage.googleapis.com [none]
+[debug] [2025-11-17T13:53:12.230Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/storage.googleapis.com x-goog-quota-user=projects/photomeh-420
+[debug] [2025-11-17T13:53:12.231Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-11-17T13:53:12.231Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:12.278Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-11-17T13:53:12.278Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/photomeh-420
+[debug] [2025-11-17T13:53:12.281Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-11-17T13:53:12.281Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-11-17T13:53:12.329Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-11-17T13:53:12.329Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/photomeh-420
+[debug] [2025-11-17T13:53:12.349Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebaseremoteconfig.googleapis.com 200
+[debug] [2025-11-17T13:53:12.349Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebaseremoteconfig.googleapis.com [omitted]
+[debug] [2025-11-17T13:53:12.509Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/fcm.googleapis.com 200
+[debug] [2025-11-17T13:53:12.509Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/fcm.googleapis.com [omitted]
+[debug] [2025-11-17T13:53:12.541Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/storage.googleapis.com 200
+[debug] [2025-11-17T13:53:12.541Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/storage.googleapis.com [omitted]
+[debug] [2025-11-17T13:53:12.566Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebaseapphosting.googleapis.com 200
+[debug] [2025-11-17T13:53:12.566Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2025-11-17T13:53:12.570Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebaseio.com 403
+[debug] [2025-11-17T13:53:12.571Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebaseio.com [omitted]
+[debug] [2025-11-17T13:53:12.780Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/storage.googleapis.com 200
+[debug] [2025-11-17T13:53:12.781Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/storage.googleapis.com [omitted]
+[debug] [2025-11-17T13:53:12.937Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebaseremoteconfig.googleapis.com 200
+[debug] [2025-11-17T13:53:12.937Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebaseremoteconfig.googleapis.com [omitted]
+[debug] [2025-11-17T13:53:13.025Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebasedataconnect.googleapis.com 200
+[debug] [2025-11-17T13:53:13.025Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2025-11-17T13:53:13.176Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebaseremoteconfig.googleapis.com 200
+[debug] [2025-11-17T13:53:13.176Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebaseremoteconfig.googleapis.com [omitted]
+[debug] [2025-11-17T13:53:13.203Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/cloudfunctions.googleapis.com 200
+[debug] [2025-11-17T13:53:13.203Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2025-11-17T13:53:13.243Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebaseio.com 403
+[debug] [2025-11-17T13:53:13.244Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebaseio.com [omitted]
+[debug] [2025-11-17T13:53:13.244Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebaseio.com 403
+[debug] [2025-11-17T13:53:13.245Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebaseio.com [omitted]
+[debug] [2025-11-17T13:53:13.264Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/identitytoolkit.googleapis.com 200
+[debug] [2025-11-17T13:53:13.264Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/identitytoolkit.googleapis.com [omitted]
+[debug] [2025-11-17T13:53:13.290Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/fcm.googleapis.com 200
+[debug] [2025-11-17T13:53:13.291Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/fcm.googleapis.com [omitted]
+[debug] [2025-11-17T13:53:13.315Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebaseapphosting.googleapis.com 200
+[debug] [2025-11-17T13:53:13.315Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2025-11-17T13:53:13.315Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/fcm.googleapis.com 200
+[debug] [2025-11-17T13:53:13.316Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/fcm.googleapis.com [omitted]
+[debug] [2025-11-17T13:53:13.342Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/storage.googleapis.com 200
+[debug] [2025-11-17T13:53:13.342Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/storage.googleapis.com [omitted]
+[debug] [2025-11-17T13:53:13.366Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebaseapphosting.googleapis.com 200
+[debug] [2025-11-17T13:53:13.366Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2025-11-17T13:53:13.711Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-11-17T13:53:13.712Z] > authorizing via signed-in user (trusis666@gmail.com)
+[debug] [2025-11-17T13:53:13.713Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-11-17T13:53:13.713Z] > authorizing via signed-in user (trusis666@gmail.com)
+[debug] [2025-11-17T13:53:13.788Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebasedataconnect.googleapis.com 200
+[debug] [2025-11-17T13:53:13.788Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2025-11-17T13:53:13.823Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebasedataconnect.googleapis.com 200
+[debug] [2025-11-17T13:53:13.823Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2025-11-17T13:53:13.891Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-11-17T13:53:13.891Z] > authorizing via signed-in user (trusis666@gmail.com)
+[debug] [2025-11-17T13:53:13.892Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-11-17T13:53:13.892Z] > authorizing via signed-in user (trusis666@gmail.com)
+[debug] [2025-11-17T13:53:13.971Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/cloudfunctions.googleapis.com 200
+[debug] [2025-11-17T13:53:13.971Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2025-11-17T13:53:13.982Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/cloudfunctions.googleapis.com 200
+[debug] [2025-11-17T13:53:13.983Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2025-11-17T13:53:14.019Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/identitytoolkit.googleapis.com 200
+[debug] [2025-11-17T13:53:14.019Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/identitytoolkit.googleapis.com [omitted]
+[debug] [2025-11-17T13:53:14.045Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/identitytoolkit.googleapis.com 200
+[debug] [2025-11-17T13:53:14.045Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/photomeh-420/services/identitytoolkit.googleapis.com [omitted]
