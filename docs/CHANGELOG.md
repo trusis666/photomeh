@@ -9,6 +9,15 @@
 
 - Added automated pre-commit formatting workflow using Husky, lint-staged, and Prettier. All staged files are now formatted before commit. (package.json, package-lock.json, .husky/pre-commit)
 
+- Added modular damage analysis backend for OpenAI Vision API:
+  - Created `constants.ts` for system/user prompts and config
+  - Added `openai-client.ts` for OpenAI API calls
+  - Added `types.ts` for API response and error types
+  - Added `utils.ts` for logging and helpers
+  - Added `validators.ts` for input validation
+  - Refactored `route.ts` to use new modular structure and improved error handling
+    (app/api/analyze-damage/)
+
 ### Changed - 2025-11-17
 
 - Simplified header navigation: removed Dashboard, Privacy Policy, and Terms & Conditions links from the reusable Header component. Only Sign in button remains. (components/Header.tsx)
