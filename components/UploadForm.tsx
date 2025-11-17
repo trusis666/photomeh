@@ -164,7 +164,18 @@ export default function UploadForm() {
                     <div className="flex flex-wrap gap-4">
                       <div>
                         <span className="font-bold">Severity:</span>{" "}
-                        {estimate.severity}
+                        {estimate.damages && estimate.damages.length > 0
+                          ? estimate.damages.reduce((max, d) => {
+                              const order = {
+                                minor: 1,
+                                moderate: 2,
+                                severe: 3,
+                              };
+                              return order[d.severity] > order[max.severity]
+                                ? d
+                                : max;
+                            }, estimate.damages[0]).severity
+                          : "N/A"}
                       </div>
                       <div>
                         <span className="font-bold">Estimated Cost:</span>{" "}

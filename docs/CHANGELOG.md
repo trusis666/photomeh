@@ -23,6 +23,8 @@
 - Added error detection and fixing prompt for Next.js (`.github/prompts/fixErrors.prompt.md`).
 - Added `firebase-debug.log` for Firebase CLI and deployment diagnostics.
 
+- Added `useDamageReport` hook to modularize damage report API logic. (lib/useDamageReport.ts)
+
 ### Changed - 2025-11-17
 
 - Simplified header navigation: removed Dashboard, Privacy Policy, and Terms & Conditions links from the reusable Header component. Only Sign in button remains. (components/Header.tsx)
@@ -40,6 +42,8 @@
 - Updated `.vscode/mcp.json` to support new MCP server integrations.
 - Refactored damage report preview in upload form to match dashboard card style: uses DaisyUI card, horizontal stats, badges for damages and parts, improved spacing and colors. (components/UploadForm.tsx)
 
+- Refactored landing page flow to generate real damage report after Stripe payment, using new hook. Improved loader and error handling. (app/page.tsx, components/StripePaymentWidget.tsx)
+
 ### Removed - 2025-11-17
 
 - Deleted deprecated documentation files: `docs/OLLAMA_SETUP.md` and `docs/OLLAMA_TROUBLESHOOTING.md`.
@@ -51,6 +55,7 @@
 - Restored all core dependencies in `package.json` and `package-lock.json` (next, react, react-dom, firebase, axios, daisyui, openai) after accidental removal. Application now builds and runs successfully. (package.json, package-lock.json)
 - Updated Stripe API version to `2025-10-29.clover` in both payment API routes to resolve build errors after Stripe type update. (app/api/create-checkout-session/route.ts, app/api/create-payment-intent/route.ts)
 - Fixed dashboard Firestore mapping to ensure all required `UploadedImage` fields are present, resolving TypeScript build error. (app/dashboard/page.tsx)
+- Fixed severity display in damage report preview to use highest severity from damages array. (components/UploadForm.tsx)
 
 ## [Previous Releases]
 

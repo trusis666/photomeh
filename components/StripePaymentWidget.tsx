@@ -12,7 +12,13 @@ const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!,
 );
 
-function CheckoutForm({ clientSecret }: { clientSecret: string }) {
+function CheckoutForm({
+  clientSecret,
+  onSuccess,
+}: {
+  clientSecret: string;
+  onSuccess?: () => void;
+}) {
   const stripe = useStripe();
   const elements = useElements();
   const [loading, setLoading] = useState(false);
@@ -31,7 +37,10 @@ function CheckoutForm({ clientSecret }: { clientSecret: string }) {
       },
     });
     if (error) setError(error.message || "Payment failed");
-    else setSuccess(true);
+    else {
+      setSuccess(true);
+      if (onSuccess) onSuccess();
+    }
     setLoading(false);
   };
 
@@ -51,7 +60,11 @@ function CheckoutForm({ clientSecret }: { clientSecret: string }) {
   );
 }
 
-export default function StripePaymentWidget() {
+export default function StripePaymentWidget({
+  onSuccess,
+}: {
+  onSuccess?: () => void;
+}) {
   const [clientSecret, setClientSecret] = useState<string | null>(null);
 
   useEffect(() => {
@@ -71,7 +84,7 @@ export default function StripePaymentWidget() {
 
   return (
     <Elements stripe={stripePromise} options={options}>
-      <CheckoutForm clientSecret={clientSecret} />
+      <CheckoutForm clientSecret={clientSecret} onSuccess={onSuccess} />
     </Elements>
   );
 }

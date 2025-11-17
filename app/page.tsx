@@ -1,8 +1,9 @@
 "use client";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
+import { useDamageReport } from "../lib/useDamageReport";
 
 const StripePaymentWidget = dynamic(
   () => import("../components/StripePaymentWidget"),
@@ -11,6 +12,42 @@ const StripePaymentWidget = dynamic(
 export default function Home() {
   const [image, setImage] = useState<string | null>(null);
   const [showReport, setShowReport] = useState(false);
+  const [generating, setGenerating] = useState(false);
+  const [finalReport, setFinalReport] = useState(false);
+  const [paymentRedirect, setPaymentRedirect] = useState(false);
+  const {
+    reportData,
+    loading: reportLoading,
+    error: reportError,
+    generateReport,
+  } = useDamageReport();
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("redirect_status") === "succeeded") {
+        // Restore image from localStorage
+        const imageData = localStorage.getItem("photomeh-upload-image");
+        if (imageData) {
+          setImage(imageData);
+          setPaymentRedirect(true);
+          setGenerating(true);
+          // Actually generate report
+          generateReport(imageData)
+            .then(() => {
+              setGenerating(false);
+              setFinalReport(true);
+              localStorage.removeItem("photomeh-upload-image");
+            })
+            .catch(() => {
+              setGenerating(false);
+              setFinalReport(true);
+              localStorage.removeItem("photomeh-upload-image");
+            });
+        }
+      }
+    }
+  }, []);
 
   // Mock report data
   const mockReport = {
@@ -36,6 +73,10 @@ export default function Home() {
     reader.onload = () => {
       setImage(reader.result as string);
       setShowReport(true);
+      // Save image to localStorage for post-payment restore
+      if (typeof window !== "undefined") {
+        localStorage.setItem("photomeh-upload-image", reader.result as string);
+      }
     };
     reader.readAsDataURL(file);
   };
@@ -49,6 +90,7 @@ export default function Home() {
       });
       const data = await res.json();
       if (data.url) {
+        // Image already saved to localStorage above
         window.location.href = data.url;
       } else {
         alert("Stripe session error: " + (data.error || "Unknown error"));
@@ -86,7 +128,7 @@ export default function Home() {
               className="file-input file-input-bordered w-full max-w-xs mb-4"
               onChange={handleImageUpload}
             />
-            {image && (
+            {image && !paymentRedirect && (
               <div className="flex flex-col items-center">
                 <img
                   src={image}
@@ -94,7 +136,7 @@ export default function Home() {
                   className="rounded-lg shadow mb-4 max-h-64"
                   style={{ objectFit: "contain" }}
                 />
-                {showReport && (
+                {showReport && !generating && !finalReport && (
                   <div className="card w-full bg-base-200 shadow mb-4">
                     <div className="card-body">
                       <h3 className="card-title mb-2">Damage Report Preview</h3>
@@ -116,11 +158,80 @@ export default function Home() {
                         </li>
                       </ul>
                       <div className="mt-4">
-                        <StripePaymentWidget />
+                        <StripePaymentWidget
+                          onSuccess={() => {
+                            setGenerating(true);
+                            setTimeout(() => {
+                              setGenerating(false);
+                              setFinalReport(true);
+                            }, 2500);
+                          }}
+                        />
                       </div>
                     </div>
                   </div>
                 )}
+              </div>
+            )}
+            {(generating || paymentRedirect) && (
+              <div className="flex flex-col items-center justify-center w-full py-12">
+                <span className="loading loading-spinner loading-lg mb-4"></span>
+                <div className="text-lg font-semibold">
+                  Generating your full report...
+                </div>
+              </div>
+            )}
+            {finalReport && (
+              <div className="card w-full bg-base-200 shadow mb-4">
+                <div className="card-body">
+                  <h3 className="card-title mb-2">Your Full Damage Report</h3>
+                  {reportData && !reportError ? (
+                    <ul className="text-left mb-4">
+                      <li>
+                        <b>Severity:</b> {reportData.severity}
+                      </li>
+                      <li>
+                        <b>Estimated Cost:</b> €{reportData.estimatedCost}
+                      </li>
+                      <li>
+                        <b>Labor:</b> {reportData.laborHours} hours
+                      </li>
+                      <li>
+                        <b>Parts:</b> {reportData.partsNeeded?.join(", ")}
+                      </li>
+                      <li>
+                        <b>Confidence:</b>{" "}
+                        {Math.round(reportData.confidence * 100)}%
+                      </li>
+                    </ul>
+                  ) : (
+                    <div className="text-error mb-4">
+                      {reportError || "No report data."}
+                    </div>
+                  )}
+                  <div className="flex gap-4 mt-4 justify-center">
+                    <button
+                      className="btn btn-primary"
+                      onClick={() => window.print()}
+                    >
+                      Download PDF
+                    </button>
+                    <button
+                      className="btn btn-outline"
+                      onClick={() =>
+                        navigator.share
+                          ? navigator.share({
+                              title: "PhotoMeh Damage Report",
+                              text: "See my AI-generated damage report!",
+                              url: window.location.href,
+                            })
+                          : alert("Share not supported on this device.")
+                      }
+                    >
+                      Share
+                    </button>
+                  </div>
+                </div>
               </div>
             )}
           </div>
