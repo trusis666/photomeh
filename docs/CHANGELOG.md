@@ -23,6 +23,10 @@
 - Removed all localStorage and custom event logic for damage report persistence. (app/dashboard/page.tsx, components/UploadForm.tsx)
 - Deleted deprecated `middleware.ts` in favor of Next.js 16 proxy convention.
 
+### Fixed - 2025-11-17
+
+- Restored all core dependencies in `package.json` and `package-lock.json` (next, react, react-dom, firebase, axios, daisyui, openai) after accidental removal. Application now builds and runs successfully. (package.json, package-lock.json)
+
 ## [Previous Releases]
 
 - Initial release.
