@@ -1,7 +1,12 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
+import dynamic from "next/dynamic";
 
+const StripePaymentWidget = dynamic(
+  () => import("../components/StripePaymentWidget"),
+  { ssr: false },
+);
 export default function Home() {
   const [image, setImage] = useState<string | null>(null);
   const [showReport, setShowReport] = useState(false);
@@ -53,9 +58,16 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen hero bg-base-200">
-      <div className="hero-content text-center">
-        <div className="max-w-2xl w-full">
+    <div className="min-h-screen flex flex-col bg-base-200">
+      {/* Fixed header with navigation buttons */}
+      <header className="w-full fixed top-0 left-0 z-10 bg-base-100/80 backdrop-blur flex justify-end items-center p-6 gap-4 shadow">
+        <Link href="/login" className="btn btn-primary btn-lg">
+          Sign in
+        </Link>
+      </header>
+      {/* Main content centered */}
+      <main className="flex-1 flex flex-col items-center justify-center pt-32 pb-12">
+        <div className="max-w-2xl w-full text-center">
           <h1 className="text-5xl font-bold mb-4">
             Welcome to <span className="text-primary">PhotoMeh</span>
           </h1>
@@ -67,18 +79,14 @@ export default function Home() {
             cost estimates powered by advanced machine learning. Streamline your
             insurance claims process today.
           </p>
-          <div className="flex gap-4 justify-center mb-8">
-            <Link href="/login" className="btn btn-primary btn-lg">
-              Get Started
-            </Link>
-            <Link href="/dashboard" className="btn btn-outline btn-lg">
-              Go to Dashboard
-            </Link>
-          </div>
+          {/* Navigation buttons moved to header above */}
 
           {/* Guest image upload and report preview */}
-          <div className="bg-base-100 rounded-xl p-6 shadow mb-8">
-            <h2 className="text-2xl font-semibold mb-4">Try Demo (Guest)</h2>
+          <div className="bg-base-100 rounded-xl p-6 shadow mb-8 mx-auto w-full max-w-xl">
+            <p className="mb-4 text-base text-center">
+              Upload a photo of your damaged vehicle below. You’ll see a preview
+              of the AI-generated damage report instantly.
+            </p>
             <input
               type="file"
               accept="image/*"
@@ -114,12 +122,9 @@ export default function Home() {
                           <b>Confidence:</b> {mockReport.confidence}
                         </li>
                       </ul>
-                      <button
-                        className="btn btn-success btn-lg"
-                        onClick={handleStripePay}
-                      >
-                        Pay €2 to Unlock Full Report
-                      </button>
+                      <div className="mt-4">
+                        <StripePaymentWidget />
+                      </div>
                     </div>
                   </div>
                 )}
@@ -127,7 +132,7 @@ export default function Home() {
             )}
           </div>
 
-          <div className="mt-12 stats shadow">
+          <div className="mt-12 stats shadow mx-auto w-full max-w-xl">
             <div className="stat">
               <div className="stat-title">Avg. Analysis Time</div>
               <div className="stat-value text-primary">2 sec</div>
@@ -142,7 +147,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 }

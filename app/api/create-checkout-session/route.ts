@@ -7,7 +7,8 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 
 export async function POST(req: NextRequest) {
   try {
-    const { image } = await req.json(); // Optionally pass image info
+    // Do not send base64 image to Stripe (URL too long)
+    await req.json(); // Ignore image
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       line_items: [
@@ -16,7 +17,7 @@ export async function POST(req: NextRequest) {
             currency: "eur",
             product_data: {
               name: "PhotoMeh Damage Report",
-              images: image ? [image] : undefined,
+              // Optionally add a static image URL here if desired
             },
             unit_amount: 200, // 2 EUR
           },
