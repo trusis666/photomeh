@@ -1,5 +1,6 @@
 "use client";
-import Link from "next/link";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 import { useState } from "react";
 import dynamic from "next/dynamic";
 
@@ -58,14 +59,8 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-base-200">
-      {/* Fixed header with navigation buttons */}
-      <header className="w-full fixed top-0 left-0 z-10 bg-base-100/80 backdrop-blur flex justify-end items-center p-6 gap-4 shadow">
-        <Link href="/login" className="btn btn-primary btn-lg">
-          Sign in
-        </Link>
-      </header>
-      {/* Main content centered */}
+    <div className="min-h-screen flex flex-col bg-base-100">
+      <Header />
       <main className="flex-1 flex flex-col items-center justify-center pt-32 pb-12">
         <div className="max-w-2xl w-full text-center">
           <h1 className="text-5xl font-bold mb-4">
@@ -79,8 +74,6 @@ export default function Home() {
             cost estimates powered by advanced machine learning. Streamline your
             insurance claims process today.
           </p>
-          {/* Navigation buttons moved to header above */}
-
           {/* Guest image upload and report preview */}
           <div className="bg-base-100 rounded-xl p-6 shadow mb-8 mx-auto w-full max-w-xl">
             <p className="mb-4 text-base text-center">
@@ -131,7 +124,6 @@ export default function Home() {
               </div>
             )}
           </div>
-
           <div className="mt-12 stats shadow mx-auto w-full max-w-xl">
             <div className="stat">
               <div className="stat-title">Avg. Analysis Time</div>
@@ -148,6 +140,7 @@ export default function Home() {
           </div>
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

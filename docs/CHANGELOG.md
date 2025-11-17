@@ -11,6 +11,9 @@
 
 ### Changed - 2025-11-17
 
+- Simplified header navigation: removed Dashboard, Privacy Policy, and Terms & Conditions links from the reusable Header component. Only Sign in button remains. (components/Header.tsx)
+- Refactored layout for all main pages and login screen to use consistent reusable Header and Footer components. (app/page.tsx, app/dashboard/page.tsx, app/(auth)/login/page.tsx, components/Header.tsx, components/Footer.tsx)
+
 - Refactored `app/api/analyze-damage/route.ts` to remove all Ollama-related code and use only OpenAI Vision API for damage analysis. Improved error handling and response validation.
 - Updated `.github/copilot-instructions.md` to remove all references to Ollama and document OpenAI Vision as the sole backend for damage analysis.
 - Migrated damage report storage from localStorage to Firebase Firestore. All dashboard and upload logic now uses Firestore for persistence. (app/dashboard/page.tsx, components/UploadForm.tsx)

@@ -1,13 +1,15 @@
-'use client';
+"use client";
 
-import {useEffect, useState} from 'react';
-import {useRouter} from 'next/navigation';
-import {useAuth} from '@/lib/auth-context';
-import UploadForm from '@/components/UploadForm';
-import {formatCost} from '@/lib/estimator';
-import Image from 'next/image';
-import type {UploadedImage} from '@/lib/types';
-import {db} from '@/lib/firebase';
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+import { useAuth } from "@/lib/auth-context";
+import UploadForm from "@/components/UploadForm";
+import { formatCost } from "@/lib/estimator";
+import Image from "next/image";
+import type { UploadedImage } from "@/lib/types";
+import { db } from "@/lib/firebase";
 import {
   collection,
   query,
@@ -15,17 +17,17 @@ import {
   orderBy,
   limit,
   onSnapshot,
-} from 'firebase/firestore';
+} from "firebase/firestore";
 
 export default function DashboardPage() {
-  const {user, userProfile, logout, loading} = useAuth();
+  const { user, userProfile, logout, loading } = useAuth();
   const router = useRouter();
   const [uploads, setUploads] = useState<UploadedImage[]>([]);
   const [loadingUploads, setLoadingUploads] = useState(true);
 
   useEffect(() => {
     if (!loading && !user) {
-      router.push('/login');
+      router.push("/login");
     }
   }, [user, loading, router]);
 
@@ -33,9 +35,9 @@ export default function DashboardPage() {
     if (!user) return;
     setLoadingUploads(true);
     const q = query(
-      collection(db, 'damageReports'),
-      where('userId', '==', user.uid),
-      orderBy('uploadedAt', 'desc'),
+      collection(db, "damageReports"),
+      where("userId", "==", user.uid),
+      orderBy("uploadedAt", "desc"),
       limit(10),
     );
     const unsubscribe = onSnapshot(
@@ -50,7 +52,7 @@ export default function DashboardPage() {
         setLoadingUploads(false);
       },
       (error) => {
-        console.error('Error fetching uploads:', error);
+        console.error("Error fetching uploads:", error);
         setUploads([]);
         setLoadingUploads(false);
       },
@@ -61,9 +63,9 @@ export default function DashboardPage() {
   const handleLogout = async () => {
     try {
       await logout();
-      router.push('/');
+      router.push("/");
     } catch (error) {
-      console.error('Logout error:', error);
+      console.error("Logout error:", error);
     }
   };
 
@@ -76,7 +78,8 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-base-200">
+    <div className="min-h-screen flex flex-col bg-base-200">
+      <Header />
       {/* Navbar */}
       <div className="navbar bg-base-100 shadow-lg">
         <div className="flex-1">
@@ -93,13 +96,13 @@ export default function DashboardPage() {
                 {userProfile?.photoURL ? (
                   <Image
                     src={userProfile.photoURL}
-                    alt={userProfile.displayName || 'User'}
+                    alt={userProfile.displayName || "User"}
                     width={40}
                     height={40}
                   />
                 ) : (
                   <div className="bg-primary text-primary-content w-full h-full flex items-center justify-center">
-                    {userProfile?.displayName?.charAt(0) || 'U'}
+                    {userProfile?.displayName?.charAt(0) || "U"}
                   </div>
                 )}
               </div>
@@ -158,7 +161,7 @@ export default function DashboardPage() {
                               0,
                             ) / uploads.length,
                           )
-                        : '$0'}
+                        : "$0"}
                     </div>
                   </div>
                 </div>
@@ -200,9 +203,9 @@ export default function DashboardPage() {
                       {upload.fileName}
                       <div
                         className={`badge badge-sm ${
-                          upload.status === 'analyzed'
-                            ? 'badge-success'
-                            : 'badge-warning'
+                          upload.status === "analyzed"
+                            ? "badge-success"
+                            : "badge-warning"
                         }`}
                       >
                         {upload.status}
@@ -213,7 +216,7 @@ export default function DashboardPage() {
                         {formatCost(upload.estimatedCost)}
                       </p>
                       <p className="text-xs text-base-content/70">
-                        {new Date(upload.uploadedAt).toLocaleDateString()} at{' '}
+                        {new Date(upload.uploadedAt).toLocaleDateString()} at{" "}
                         {new Date(upload.uploadedAt).toLocaleTimeString()}
                       </p>
                     </div>
@@ -241,6 +244,7 @@ export default function DashboardPage() {
           )}
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
