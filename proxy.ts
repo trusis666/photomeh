@@ -2,8 +2,8 @@ import {NextResponse} from 'next/server';
 import type {NextRequest} from 'next/server';
 
 // For Firebase client-side auth, we'll let the client components handle authentication
-// This middleware only handles static redirects and allows all authenticated routes
-export function middleware(request: NextRequest) {
+// This proxy only handles static redirects and allows all authenticated routes
+export function proxy(request: NextRequest) {
   // Let all requests through - auth checking happens client-side
   return NextResponse.next();
 }

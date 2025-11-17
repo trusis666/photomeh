@@ -4,6 +4,9 @@ import {useState, useRef, ChangeEvent} from 'react';
 import {useAuth} from '@/lib/auth-context';
 import {estimateDamage, formatCost, getSeverityColor} from '@/lib/estimator';
 import type {DamageEstimate} from '@/lib/types';
+import {uploadToBackblaze} from '@/lib/backblaze';
+import {db} from '@/lib/firebase';
+import {collection, addDoc} from 'firebase/firestore';
 import Image from 'next/image';
 
 export default function UploadForm() {
@@ -52,25 +55,20 @@ export default function UploadForm() {
     setError(null);
 
     try {
-      // Simulate upload progress for local storage
-      setUploadProgress(30);
-      await new Promise((resolve) => setTimeout(resolve, 300));
-      setUploadProgress(60);
-      await new Promise((resolve) => setTimeout(resolve, 300));
-      setUploadProgress(100);
+      // 1. Upload image to Backblaze B2
+      setUploadProgress(10);
+      const imageUrl = await uploadToBackblaze(selectedFile);
+      setUploadProgress(70);
 
-      setUploading(false);
-      setAnalyzing(true);
-
-      // Run damage estimation using the preview URL (base64)
-      const damageEstimate = await estimateDamage(previewUrl || '');
+      // 2. Run damage estimation using the Backblaze image URL
+      const damageEstimate = await estimateDamage(imageUrl);
       setEstimate(damageEstimate);
+      setUploadProgress(90);
 
-      // Store locally in browser's localStorage
-      const localData = {
-        id: Date.now().toString(),
+      // 3. Store report in Firestore
+      const reportData = {
         userId: user.uid,
-        imageUrl: previewUrl, // base64 data URL
+        imageUrl,
         fileName: selectedFile.name,
         uploadedAt: new Date().toISOString(),
         estimatedCost: damageEstimate.totalCost,
@@ -79,22 +77,10 @@ export default function UploadForm() {
         confidence: damageEstimate.confidence,
         status: 'analyzed',
       };
+      await addDoc(collection(db, 'damageReports'), reportData);
 
-      // Get existing reports from localStorage
-      const existingReports = localStorage.getItem('damage-reports');
-      const reports = existingReports ? JSON.parse(existingReports) : [];
-      reports.unshift(localData); // Add new report at the beginning
-
-      // Keep only last 50 reports to avoid localStorage limits
-      if (reports.length > 50) {
-        reports.splice(50);
-      }
-
-      localStorage.setItem('damage-reports', JSON.stringify(reports));
-
-      // Dispatch custom event to notify dashboard to refresh
-      window.dispatchEvent(new Event('damageReportAdded'));
-
+      setUploadProgress(100);
+      setUploading(false);
       setAnalyzing(false);
     } catch (err) {
       console.error('Error:', err);

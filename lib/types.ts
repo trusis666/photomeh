@@ -1,9 +1,9 @@
 export interface UploadedImage {
   id: string;
   userId: string;
-  imageUrl: string;
+  imageUrl: string; // Remote URL (Backblaze B2), not base64
   thumbnailUrl?: string;
-  uploadedAt: Date;
+  uploadedAt: string; // ISO string for Firestore compatibility
   estimatedCost: number;
   damages: string[];
   status: 'pending' | 'analyzed' | 'error';

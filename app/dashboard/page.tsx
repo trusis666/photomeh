@@ -7,6 +7,15 @@ import UploadForm from '@/components/UploadForm';
 import {formatCost} from '@/lib/estimator';
 import Image from 'next/image';
 import type {UploadedImage} from '@/lib/types';
+import {db} from '@/lib/firebase';
+import {
+  collection,
+  query,
+  where,
+  orderBy,
+  limit,
+  onSnapshot,
+} from 'firebase/firestore';
 
 export default function DashboardPage() {
   const {user, userProfile, logout, loading} = useAuth();
@@ -21,56 +30,32 @@ export default function DashboardPage() {
   }, [user, loading, router]);
 
   useEffect(() => {
-    const fetchUploads = () => {
-      if (!user) return;
-
-      try {
-        // Load from localStorage
-        const storedReports = localStorage.getItem('damage-reports');
-        if (storedReports) {
-          const reports = JSON.parse(storedReports);
-          // Filter by current user and limit to 10
-          const userReports: UploadedImage[] = reports
-            .filter((report: any) => report.userId === user.uid)
-            .slice(0, 10)
-            .map((report: any) => ({
-              id: report.id,
-              userId: report.userId,
-              imageUrl: report.imageUrl,
-              uploadedAt: new Date(report.uploadedAt),
-              estimatedCost: report.estimatedCost,
-              damages: report.damages || [],
-              status: report.status,
-              fileName: report.fileName,
-            }));
-
-          setUploads(userReports);
-        } else {
-          setUploads([]);
-        }
-      } catch (error) {
+    if (!user) return;
+    setLoadingUploads(true);
+    const q = query(
+      collection(db, 'damageReports'),
+      where('userId', '==', user.uid),
+      orderBy('uploadedAt', 'desc'),
+      limit(10),
+    );
+    const unsubscribe = onSnapshot(
+      q,
+      (snapshot) => {
+        const reports: UploadedImage[] = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+          uploadedAt: doc.data().uploadedAt,
+        }));
+        setUploads(reports);
+        setLoadingUploads(false);
+      },
+      (error) => {
         console.error('Error fetching uploads:', error);
         setUploads([]);
-      } finally {
         setLoadingUploads(false);
-      }
-    };
-
-    fetchUploads();
-
-    // Listen for storage events to refresh when new uploads are added
-    const handleStorageChange = () => {
-      fetchUploads();
-    };
-
-    window.addEventListener('storage', handleStorageChange);
-    // Also listen for custom event when upload happens in same tab
-    window.addEventListener('damageReportAdded', handleStorageChange);
-
-    return () => {
-      window.removeEventListener('storage', handleStorageChange);
-      window.removeEventListener('damageReportAdded', handleStorageChange);
-    };
+      },
+    );
+    return () => unsubscribe();
   }, [user]);
 
   const handleLogout = async () => {
@@ -228,8 +213,8 @@ export default function DashboardPage() {
                         {formatCost(upload.estimatedCost)}
                       </p>
                       <p className="text-xs text-base-content/70">
-                        {upload.uploadedAt.toLocaleDateString()} at{' '}
-                        {upload.uploadedAt.toLocaleTimeString()}
+                        {new Date(upload.uploadedAt).toLocaleDateString()} at{' '}
+                        {new Date(upload.uploadedAt).toLocaleTimeString()}
                       </p>
                     </div>
                     <div className="card-actions justify-start mt-2">
