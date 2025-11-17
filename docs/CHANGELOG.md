@@ -4,6 +4,8 @@
 
 ### Added - 2025-11-17
 
+- Added guest image upload field, mock damage report preview, and Stripe payment button to unlock full report on landing page. No API call for preview; Stripe payment is currently a placeholder. (app/page.tsx)
+
 - Added automated pre-commit formatting workflow using Husky, lint-staged, and Prettier. All staged files are now formatted before commit. (package.json, package-lock.json, .husky/pre-commit)
 
 ### Changed - 2025-11-17
