@@ -38,6 +38,7 @@
 - Installed `axios` for Backblaze B2 upload support. (package.json, package-lock.json)
 
 - Updated `.vscode/mcp.json` to support new MCP server integrations.
+- Refactored damage report preview in upload form to match dashboard card style: uses DaisyUI card, horizontal stats, badges for damages and parts, improved spacing and colors. (components/UploadForm.tsx)
 
 ### Removed - 2025-11-17
 

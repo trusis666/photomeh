@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import {useState, useRef, ChangeEvent} from 'react';
-import {useAuth} from '@/lib/auth-context';
-import {estimateDamage, formatCost, getSeverityColor} from '@/lib/estimator';
-import type {DamageEstimate} from '@/lib/types';
-import {uploadToBackblaze} from '@/lib/backblaze';
-import {db} from '@/lib/firebase';
-import {collection, addDoc} from 'firebase/firestore';
-import Image from 'next/image';
+import { useState, useRef, ChangeEvent } from "react";
+import { useAuth } from "@/lib/auth-context";
+import { estimateDamage, formatCost, getSeverityColor } from "@/lib/estimator";
+import type { DamageEstimate } from "@/lib/types";
+import { uploadToBackblaze } from "@/lib/backblaze";
+import { db } from "@/lib/firebase";
+import { collection, addDoc } from "firebase/firestore";
+import Image from "next/image";
 
 export default function UploadForm() {
-  const {user} = useAuth();
+  const { user } = useAuth();
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [uploading, setUploading] = useState(false);
@@ -25,14 +25,14 @@ export default function UploadForm() {
     if (!file) return;
 
     // Validate file type
-    if (!file.type.startsWith('image/')) {
-      setError('Please select an image file');
+    if (!file.type.startsWith("image/")) {
+      setError("Please select an image file");
       return;
     }
 
     // Validate file size (max 10MB)
     if (file.size > 10 * 1024 * 1024) {
-      setError('File size must be less than 10MB');
+      setError("File size must be less than 10MB");
       return;
     }
 
@@ -75,16 +75,16 @@ export default function UploadForm() {
         damages: damageEstimate.damages.map((d) => d.type),
         laborHours: damageEstimate.laborHours,
         confidence: damageEstimate.confidence,
-        status: 'analyzed',
+        status: "analyzed",
       };
-      await addDoc(collection(db, 'damageReports'), reportData);
+      await addDoc(collection(db, "damageReports"), reportData);
 
       setUploadProgress(100);
       setUploading(false);
       setAnalyzing(false);
     } catch (err) {
-      console.error('Error:', err);
-      setError('An error occurred. Please try again.');
+      console.error("Error:", err);
+      setError("An error occurred. Please try again.");
       setUploading(false);
       setAnalyzing(false);
     }
@@ -97,7 +97,7 @@ export default function UploadForm() {
     setError(null);
     setUploadProgress(0);
     if (fileInputRef.current) {
-      fileInputRef.current.value = '';
+      fileInputRef.current.value = "";
     }
   };
 
@@ -144,17 +144,57 @@ export default function UploadForm() {
         </div>
 
         {previewUrl && (
-          <div className="mt-4">
-            <label className="label">
-              <span className="label-text">Preview</span>
-            </label>
-            <div className="relative w-full h-64 bg-base-200 rounded-lg overflow-hidden">
-              <Image
-                src={previewUrl}
-                alt="Preview"
-                fill
-                className="object-contain"
-              />
+          <div className="mt-4 flex justify-center">
+            <div className="card bg-base-100 shadow-xl w-full max-w-md">
+              <figure className="relative h-56 bg-base-200 rounded-t-xl overflow-hidden">
+                <Image
+                  src={previewUrl}
+                  alt="Preview"
+                  fill
+                  className="object-cover"
+                />
+              </figure>
+              <div className="card-body p-6">
+                <h2 className="card-title text-lg mb-2">
+                  Damage Report Preview
+                </h2>
+                {/* Stats row if estimate exists */}
+                {estimate && (
+                  <div className="flex flex-col gap-2 mb-4">
+                    <div className="flex flex-wrap gap-4">
+                      <div>
+                        <span className="font-bold">Severity:</span>{" "}
+                        {estimate.severity}
+                      </div>
+                      <div>
+                        <span className="font-bold">Estimated Cost:</span>{" "}
+                        <span className="text-primary font-bold">
+                          {formatCost(estimate.totalCost)}
+                        </span>
+                      </div>
+                      <div>
+                        <span className="font-bold">Labor:</span>{" "}
+                        {estimate.laborHours} hours
+                      </div>
+                      <div>
+                        <span className="font-bold">Confidence:</span>{" "}
+                        {Math.round(estimate.confidence * 100)}%
+                      </div>
+                    </div>
+                    <div>
+                      <span className="font-bold">Parts:</span>{" "}
+                      {estimate.partsNeeded.slice(0, 2).join(", ")}
+                      {estimate.partsNeeded.length > 2 && (
+                        <span className="ml-2 badge badge-ghost badge-xs">
+                          +{estimate.partsNeeded.length - 2} more
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                )}
+                {/* Payment options and actions (existing code) */}
+                {/* ...existing code... */}
+              </div>
             </div>
           </div>
         )}
@@ -271,10 +311,10 @@ export default function UploadForm() {
                 disabled={!selectedFile || uploading || analyzing}
               >
                 {uploading
-                  ? 'Uploading...'
+                  ? "Uploading..."
                   : analyzing
-                  ? 'Analyzing...'
-                  : 'Analyze Damage'}
+                    ? "Analyzing..."
+                    : "Analyze Damage"}
               </button>
             </>
           )}
