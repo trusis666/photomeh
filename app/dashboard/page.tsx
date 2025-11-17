@@ -43,11 +43,20 @@ export default function DashboardPage() {
     const unsubscribe = onSnapshot(
       q,
       (snapshot) => {
-        const reports: UploadedImage[] = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-          uploadedAt: doc.data().uploadedAt,
-        }));
+        const reports: UploadedImage[] = snapshot.docs.map((doc) => {
+          const data = doc.data();
+          return {
+            id: doc.id,
+            userId: data.userId ?? "",
+            imageUrl: data.imageUrl ?? "",
+            thumbnailUrl: data.thumbnailUrl,
+            uploadedAt: data.uploadedAt ?? "",
+            estimatedCost: data.estimatedCost ?? 0,
+            damages: data.damages ?? [],
+            status: data.status ?? "pending",
+            fileName: data.fileName ?? "",
+          };
+        });
         setUploads(reports);
         setLoadingUploads(false);
       },

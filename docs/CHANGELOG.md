@@ -32,6 +32,8 @@
 ### Fixed - 2025-11-17
 
 - Restored all core dependencies in `package.json` and `package-lock.json` (next, react, react-dom, firebase, axios, daisyui, openai) after accidental removal. Application now builds and runs successfully. (package.json, package-lock.json)
+- Updated Stripe API version to `2025-10-29.clover` in both payment API routes to resolve build errors after Stripe type update. (app/api/create-checkout-session/route.ts, app/api/create-payment-intent/route.ts)
+- Fixed dashboard Firestore mapping to ensure all required `UploadedImage` fields are present, resolving TypeScript build error. (app/dashboard/page.tsx)
 
 ## [Previous Releases]
 
