@@ -2,99 +2,77 @@
 
 ## Project Overview
 
-Next.js 16 insurance damage estimator using Firebase for auth/storage and localStorage for data persistence. App Router with TypeScript, DaisyUI components, and client-side authentication pattern.
+PhotoMeh is a Next.js 16 insurance damage estimator using Firebase for authentication and Backblaze B2 for storage. The app uses the App Router, TypeScript, DaisyUI, and a client-side-only authentication pattern.
 
 ## Architecture & Data Flow
 
 ### Authentication Pattern (Client-Side Only)
 
-- **No server-side auth**: `middleware.ts` allows all requests through - authentication happens entirely client-side
-- Auth state managed by `lib/auth-context.tsx` using Firebase redirect flow (`signInWithRedirect` + `getRedirectResult`)
-- Protected routes check auth client-side via `useAuth()` hook and redirect to `/login` in `useEffect`
-- User profile stored in context, derived from Firebase User object
+- No server-side auth; `middleware.ts` allows all requests.
+- Auth state managed in `lib/auth-context.tsx` using Firebase redirect flow (`signInWithRedirect`, `getRedirectResult`).
+- Protected routes use `useAuth()` and redirect to `/login` client-side.
+- User profile is derived from Firebase User and stored in context.
 
 ### Data Storage Strategy
 
-- **localStorage for persistence**: All damage reports stored in browser's `localStorage` (key: `damage-reports`)
-- **No Firestore writes**: Despite Firebase being configured, app only uses Auth and Storage - Firestore is unused
-- Upload flow: File → base64 preview → mock estimation → localStorage → custom `damageReportAdded` event
-- Dashboard listens to `storage` events and custom events to refresh when reports are added
+- **Backblaze B2 for persistence:** All damage report images and metadata are stored in Backblaze B2 (see `lib/backblaze.ts`).
+- Upload flow: File → base64 preview → Backblaze B2 upload → damage estimation → Firestore write → custom `damageReportAdded` event.
+- Dashboard listens for custom events to refresh when reports are added.
 
 ### Route Structure
 
 ```
 app/
-  (auth)/login/      - Route group, no layout impact
-  dashboard/         - Protected via client-side redirect
-  layout.tsx         - Wraps all with <AuthProvider>
+  (auth)/login/      # Auth route group
+  dashboard/         # Protected, client-side redirect
+  layout.tsx         # Wraps all with <AuthProvider>
 ```
 
-## Key Patterns
+## Key Patterns & Conventions
 
-### Image Handling
+- Always use `'use client'` in components using Firebase auth/hooks.
+- Backblaze B2 upload via `lib/backblaze.ts`.
+- Ensure API keys and bucket info are set in `.env.local`.
+- Route protection:
+  ```tsx
+  useEffect(() => {
+    if (!loading && !user) router.push("/login");
+  }, [user, loading, router]);
+  ```
+- Types: All core types in `lib/types.ts` (`UploadedImage`, `DamageEstimate`, `UserProfile`).
+- Styling: Tailwind + DaisyUI (themes: light, dark, cupcake). Global styles in `app/globals.css`.
 
-- File validation: max 10MB, image types only
-- Preview via FileReader base64 conversion
-- No actual Firebase Storage upload - base64 stored in localStorage
-- `next.config.ts` allows Firebase Storage and Google profile images via `remotePatterns`
+## Integration Points
 
-### Damage Analysis System (OpenAI Vision)
+- OpenAI Vision API (see `docs/OPENAI_INTEGRATION.md`)
+- Firebase Auth (no Firestore)
+- Backblaze B2 for storage (`lib/backblaze.ts`)
+- Firestore for report metadata
+- Future: multi-angle analysis
 
-`app/api/analyze-damage/route.ts` calls OpenAI GPT-4o Vision API for real damage analysis:
+## Developer Workflows
 
-- Sends vehicle damage photo (base64) to OpenAI Vision
-- Returns `DamageEstimate` with cost breakdown, labor hours, parts, confidence score
-- Validates and parses AI response, handles errors and edge cases
-- Helper functions: `getSeverityColor()` maps severity to DaisyUI badge classes, `formatCost()` uses Intl.NumberFormat
-
-See `docs/OPENAI_INTEGRATION.md` for full API integration details and troubleshooting.
-
-### State Management
-
-- React Context for auth (`AuthContext`)
-- Component-level state for uploads, forms
-- localStorage as "database"
-- Custom events for cross-component communication
-
-## Development Commands
-
-```bash
-npm run dev    # Start dev server (Next.js 16)
-npm run build  # Production build
-npm run lint   # ESLint check
-```
+- **Start dev server:** `npm run dev`
+- **Build:** `npm run build`
+- **Lint:** `npm run lint`
+- **Environment:** Set all required variables in `.env.local` (see below)
 
 ## Environment Variables
 
-Required in `.env.local`:
-
-- `NEXT_PUBLIC_FIREBASE_API_KEY`
-- `NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN`
-- `NEXT_PUBLIC_FIREBASE_PROJECT_ID`
-- `NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET`
-- `NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID`
-- `NEXT_PUBLIC_FIREBASE_APP_ID`
-- `OPENAI_API_KEY` (for damage analysis)
-
-All Firebase config uses `NEXT_PUBLIC_` prefix for client-side access. OpenAI API key is required for real damage analysis (see `docs/OPENAI_INTEGRATION.md`).
+- `NEXT_PUBLIC_FIREBASE_API_KEY`, `NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN`, etc. (all Firebase config is client-side)
+- `OPENAI_API_KEY` for damage analysis
+- `B2_KEY_ID`, `B2_APPLICATION_KEY`, `B2_BUCKET_ID`, `B2_BUCKET_NAME` for Backblaze B2
 
 ## Common Gotchas
 
-1. **Firebase redirect flow**: Use `signInWithRedirect`, not `signInWithPopup`. `getRedirectResult` must be checked on mount.
-2. **Client components required**: Any component using Firebase auth/hooks needs `'use client'` directive
-3. **localStorage limits**: Reports capped at 50 to avoid quota issues (see `UploadForm.tsx` line 77)
-4. **Route protection**: Add auth check pattern to new protected pages:
-   ```tsx
-   useEffect(() => {
-     if (!loading && !user) router.push('/login');
-   }, [user, loading, router]);
-   ```
+- Backblaze B2: Ensure correct bucket and API credentials are configured in `.env.local`.
+- Route protection is client-side only.
 
 ## TypeScript Types
 
 All types in `lib/types.ts`:
 
-- `UploadedImage` - stored in localStorage
+- `UploadedImage` - stored in Backblaze B2 and Firestore
 - `DamageEstimate` - returned by estimator
 - `UserProfile` - derived from Firebase User
 
@@ -107,5 +85,9 @@ All types in `lib/types.ts`:
 ## Future Integration Points
 
 - Continue improving OpenAI Vision integration (multi-angle, streaming, confidence thresholds)
-- Swap localStorage for Firestore writes (structure already matches Firestore schema in README)
-- Add Firebase Storage upload flow (currently only creates base64 preview)
+- Add more Backblaze B2 features (thumbnails, access control)
+- Multi-angle analysis
+
+---
+
+**For questions or unclear patterns, review `README.md` and `docs/OPENAI_INTEGRATION.md`.**

@@ -24,7 +24,7 @@
 - Refactored layout for all main pages and login screen to use consistent reusable Header and Footer components. (app/page.tsx, app/dashboard/page.tsx, app/(auth)/login/page.tsx, components/Header.tsx, components/Footer.tsx)
 
 - Refactored `app/api/analyze-damage/route.ts` to remove all Ollama-related code and use only OpenAI Vision API for damage analysis. Improved error handling and response validation.
-- Updated `.github/copilot-instructions.md` to remove all references to Ollama and document OpenAI Vision as the sole backend for damage analysis.
+- Updated `.github/copilot-instructions.md` to fully document Backblaze B2 as the storage backend, removing all references to localStorage and clarifying the new data flow, integration points, and developer workflows. (File: .github/copilot-instructions.md)
 - Migrated damage report storage from localStorage to Firebase Firestore. All dashboard and upload logic now uses Firestore for persistence. (app/dashboard/page.tsx, components/UploadForm.tsx)
 - Integrated Backblaze B2 for image uploads. Images are now stored remotely and referenced by URL in reports. (lib/backblaze.ts, .env.local.example)
 - Updated `UploadedImage` type to use image URLs and ISO string dates for Firestore compatibility. (lib/types.ts)
