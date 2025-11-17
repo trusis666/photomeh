@@ -34,9 +34,22 @@ export default function Home() {
     reader.readAsDataURL(file);
   };
 
-  const handleStripePay = () => {
-    // Placeholder: Replace with Stripe Checkout integration
-    alert("Stripe payment flow goes here.");
+  const handleStripePay = async () => {
+    try {
+      const res = await fetch("/api/create-checkout-session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ image }),
+      });
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        alert("Stripe session error: " + (data.error || "Unknown error"));
+      }
+    } catch (err) {
+      alert("Stripe payment error: " + err);
+    }
   };
 
   return (
