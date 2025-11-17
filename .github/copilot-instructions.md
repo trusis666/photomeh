@@ -38,14 +38,16 @@ app/
 - No actual Firebase Storage upload - base64 stored in localStorage
 - `next.config.ts` allows Firebase Storage and Google profile images via `remotePatterns`
 
-### Mock Estimation System
+### Damage Analysis System (OpenAI Vision)
 
-`lib/estimator.ts` simulates AI damage detection:
+`app/api/analyze-damage/route.ts` calls OpenAI GPT-4o Vision API for real damage analysis:
 
-- Random selection of 1-3 damage types from predefined pool
-- 1.5s artificial delay to mimic API call
+- Sends vehicle damage photo (base64) to OpenAI Vision
 - Returns `DamageEstimate` with cost breakdown, labor hours, parts, confidence score
+- Validates and parses AI response, handles errors and edge cases
 - Helper functions: `getSeverityColor()` maps severity to DaisyUI badge classes, `formatCost()` uses Intl.NumberFormat
+
+See `docs/OPENAI_INTEGRATION.md` for full API integration details and troubleshooting.
 
 ### State Management
 
@@ -72,8 +74,9 @@ Required in `.env.local`:
 - `NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET`
 - `NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID`
 - `NEXT_PUBLIC_FIREBASE_APP_ID`
+- `OPENAI_API_KEY` (for damage analysis)
 
-All Firebase config uses `NEXT_PUBLIC_` prefix for client-side access.
+All Firebase config uses `NEXT_PUBLIC_` prefix for client-side access. OpenAI API key is required for real damage analysis (see `docs/OPENAI_INTEGRATION.md`).
 
 ## Common Gotchas
 
@@ -103,6 +106,6 @@ All types in `lib/types.ts`:
 
 ## Future Integration Points
 
-- Replace `estimateDamage()` mock with real AI API call
+- Continue improving OpenAI Vision integration (multi-angle, streaming, confidence thresholds)
 - Swap localStorage for Firestore writes (structure already matches Firestore schema in README)
 - Add Firebase Storage upload flow (currently only creates base64 preview)

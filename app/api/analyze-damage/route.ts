@@ -1,5 +1,8 @@
 import {NextRequest, NextResponse} from 'next/server';
+
 import OpenAI from 'openai';
+export const maxDuration = 300; // 5 minutes
+export const dynamic = 'force-dynamic';
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -8,7 +11,6 @@ const openai = new OpenAI({
 export async function POST(request: NextRequest) {
   try {
     const {imageBase64} = await request.json();
-
     if (!imageBase64) {
       return NextResponse.json(
         {error: 'Image data is required'},
@@ -16,41 +18,79 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Console log image data (first 100 chars of base64)
     console.log('=== Damage Analysis Request ===');
+    console.log('Using: OpenAI Vision API');
     console.log('Image data received (length):', imageBase64.length);
     console.log('Image data preview:', imageBase64.substring(0, 100) + '...');
     console.log('Timestamp:', new Date().toISOString());
 
-    // TODO: Call OpenAI Vision API when ready
-    // const response = await openai.chat.completions.create({...});
-
-    // Return mock estimate for now
-    const mockEstimate = {
-      totalCost: 1250,
-      damages: [
+    // Call OpenAI Vision API
+    const response = await openai.chat.completions.create({
+      model: 'gpt-4o',
+      messages: [
         {
-          type: 'Front Bumper Damage',
-          severity: 'moderate' as const,
-          estimatedCost: 850,
-          description: 'Impact damage with visible cracks and deformation',
+          role: 'system',
+          content: `You are an expert auto insurance damage assessor. Analyze vehicle damage photos and provide detailed cost estimates.\n\nReturn your response as a JSON object with this EXACT structure:\n{\n  "damages": [\n    {\n      "type": "string (e.g., 'Front Bumper Damage', 'Hood Dent', 'Door Scratch')",\n      "severity": "minor" | "moderate" | "severe",\n      "estimatedCost": number,\n      "description": "string (detailed description of the damage)"\n    }\n  ],\n  "laborHours": number,\n  "partsNeeded": ["array", "of", "strings"],\n  "confidence": number (between 0 and 1, e.g., 0.85 for 85% confidence),\n  "totalCost": number (sum of all damage costs)\n}\n\nCost Guidelines:\n- Minor (scratches, small dents): $150-500\n- Moderate (bumper damage, panel dents): $500-1500\n- Severe (structural damage, multiple parts): $1500-5000+\n- Labor rate: $100-150/hour\n\nIf the image is NOT a vehicle or shows NO visible damage, return:\n{\n  "damages": [],\n  "laborHours": 0,\n  "partsNeeded": [],\n  "confidence": 0,\n  "totalCost": 0\n}`,
         },
         {
-          type: 'Paint Scratches',
-          severity: 'minor' as const,
-          estimatedCost: 400,
-          description: 'Surface scratches requiring repainting',
+          role: 'user',
+          content: [
+            {
+              type: 'text',
+              text: 'Analyze this vehicle damage photo and provide a detailed repair cost estimate in JSON format.',
+            },
+            {
+              type: 'image_url',
+              image_url: {
+                url: imageBase64,
+              },
+            },
+          ],
         },
       ],
-      laborHours: 8,
-      partsNeeded: ['Front Bumper', 'Paint'],
-      confidence: 0.85,
-    };
+      max_tokens: 1500,
+      temperature: 0.2,
+    });
 
-    console.log('Returning estimate:', JSON.stringify(mockEstimate, null, 2));
+    const content = response.choices[0].message.content;
+    if (!content) {
+      throw new Error('No response from OpenAI');
+    }
+
+    // Parse JSON response
+    console.log('OpenAI raw response:', content);
+    let estimate;
+    try {
+      estimate = JSON.parse(content);
+    } catch (parseError) {
+      console.error('Failed to parse OpenAI response as JSON:', content);
+      throw new Error('OpenAI returned invalid JSON');
+    }
+
+    // Validate and fix response structure
+    if (!estimate.damages || !Array.isArray(estimate.damages)) {
+      estimate.damages = [];
+    }
+    if (!estimate.totalCost && estimate.damages.length > 0) {
+      estimate.totalCost = estimate.damages.reduce(
+        (sum: number, damage: any) => sum + (damage.estimatedCost || 0),
+        0,
+      );
+    }
+    if (estimate.confidence > 1) {
+      estimate.confidence = estimate.confidence / 100;
+    }
+    estimate.damages = estimate.damages.map((damage: any) => {
+      const validSeverities = ['minor', 'moderate', 'severe'];
+      if (!validSeverities.includes(damage.severity)) {
+        damage.severity = 'moderate';
+      }
+      return damage;
+    });
+
+    console.log('Returning estimate:', JSON.stringify(estimate, null, 2));
     console.log('==============================\n');
-
-    return NextResponse.json(mockEstimate);
+    return NextResponse.json(estimate);
   } catch (error: any) {
     console.error('Error analyzing damage:', error);
     return NextResponse.json(
